@@ -13,6 +13,8 @@ URL:      https://github.com/KyleGospo/vangogh_oc_fix-kmod/
 Source:   %{url}/archive/refs/heads/main.tar.gz
 Source1:  https://raw.githubusercontent.com/badly-drawn-wizards/vangogh_oc_fix/master/module/vangogh_oc_fix.c
 
+Patch0:   amd_smu.patch
+
 BuildRequires: kmodtool
 
 %{expand:%(kmodtool --target %{_target_cpu} --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null) }
@@ -35,6 +37,7 @@ kmodtool --target %{_target_cpu} --kmodname %{name} %{?buildforkernels:--%{build
 
 %setup -q -c vangogh_oc_fix-kmod-main
 cp %{SOURCE1} vangogh_oc_fix-kmod-main/vangogh_oc_fix.c
+%patch 0
 
 find . -type f -name '*.c' -exec sed -i "s/#VERSION#/%{version}/" {} \+
 

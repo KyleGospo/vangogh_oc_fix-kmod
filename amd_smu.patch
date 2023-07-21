@@ -1,0 +1,10 @@
+--- vangogh_oc_fix-kmod-main/vangogh_oc_fix.c
++++ vangogh_oc_fix-kmod-main/vangogh_oc_fix.c
+@@ -9,7 +9,6 @@
+  * You will see the trace data in /var/log/messages and on the console
+  * whenever kernel_clone() is invoked to create a new process.
+  */
+-#include "amdgpu_smu.h"
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/moduleparam.h>
